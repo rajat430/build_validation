@@ -2,7 +2,7 @@ name: validate
 on:
     pull_request:
         branches: [dev,release,uat,preprod,main]
-        types: [created,opened,reopened]
+        types: [created,opened,reopened,synchronize]
 jobs:
     build:
         runs-on: ubuntu-latest
