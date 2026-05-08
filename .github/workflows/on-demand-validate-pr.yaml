@@ -15,6 +15,7 @@ on:
 
 jobs:
     prepare:
+        if: github.event_name == 'workflow_dispatch'
         runs-on: ubuntu-latest
         steps:
             - name: task1
@@ -22,6 +23,7 @@ jobs:
                 echo "Your Current branch in prepare job is: ${{inputs.branch}}"
 
     deploy:
+        if: github.event_name == 'workflow_dispatch'
         runs-on: ubuntu-latest
         steps:
             - name: task2
