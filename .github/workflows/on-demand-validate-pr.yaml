@@ -1,0 +1,31 @@
+name: on-demand-validate-pr
+on:
+    pull_request:
+        branches: [release]
+    workflow_dispatch:
+        inputs:
+            branch:
+                description: 'Select Branch to validate'
+                required: true
+                type: choice
+                default: release
+                options:
+                    - release
+                    - preprod
+
+jobs:
+    prepare:
+        if: github.event_name == 'workflow_dispatch'
+        runs-on: ubuntu-latest
+        steps:
+            - name: task1
+              run: |
+                echo "Your Current branch in prepare job is: ${{inputs.branch}}"
+
+    deploy:
+        if: github.event_name == 'workflow_dispatch'
+        runs-on: ubuntu-latest
+        steps:
+            - name: task2
+              run: |
+                echo "Your Current branch in deploy job is: ${{inputs.branch}}"
