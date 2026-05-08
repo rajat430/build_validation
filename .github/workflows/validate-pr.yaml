@@ -1,0 +1,11 @@
+name: validate
+on:
+    pull_request:
+        branches: [dev,release,uat,preprod,main]
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: validation
+              run: |
+                echo "Running Validation for Target Branch: ${{github.base_ref}}"
